@@ -8,15 +8,24 @@ interface Props {
   isEditable?: boolean
   placeholder?: string
   onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
+  isInvalid?: boolean
+  feedback?: string
 }
 
 const TextFieldWithLabelFormGroup = (props: Props) => {
-  const { value, label, name, isEditable, onChange } = props
+  const { value, label, name, isEditable, onChange, isInvalid, feedback } = props
   const id = `${name}TextField`
   return (
     <div className="form-group">
       <Label text={label} htmlFor={id} />
-      <TextField rows={4} value={value} disabled={!isEditable} onChange={onChange} />
+      <TextField
+        rows={4}
+        value={value}
+        disabled={!isEditable}
+        onChange={onChange}
+        isInvalid={isInvalid}
+        feedback={feedback}
+      />
     </div>
   )
 }
